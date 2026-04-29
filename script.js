@@ -1,5 +1,3 @@
-alert ("BIENVENIDO AL EXAMEN FINAL DE CRUZ SAGASTUME");
-
 let dataTable; // Variable para guardar la instancia de la tabla
 let dataTableInitialized = false;
 
@@ -12,6 +10,9 @@ const paisesPorPagina = 5;
 let paisesCards = [];
 let paginaActualCards = 1;
 const paisesPorCards = 2; // 2 países = 2 cards
+
+// Copia de respaldo para restaurar buscador
+let paisesOriginales = [];
 
 const dataTableOptions = {
     columnDefs: [
@@ -36,15 +37,14 @@ async function cargarPaises() {
         
         // Guardar todos los países
         paisesTodos = paises;
+        paisesOriginales = [...paises]; // Copia de respaldo
         paisesCards = [...paises];
         paginaActual = 1;
         paginaActualCards = 1;
 
-        // Llenar tabla y cards
         llenarTablaPaginada();
         llenarCards();
         
-        // Inicializar DataTables
         if (dataTableInitialized) {
             dataTable.destroy();
         }
@@ -56,7 +56,6 @@ async function cargarPaises() {
     }
 }
 
-// === TABLA: Mostrar 5 países con botones de flecha ===
 function llenarTablaPaginada() {
     const inicio = (paginaActual - 1) * paisesPorPagina;
     const fin = inicio + paisesPorPagina;
@@ -94,7 +93,6 @@ function llenarTabla(paises) {
     });
 }
 
-// === CARDS: Mostrar 2 países con botones de flecha ===
 function llenarCards() {
     const inicio = (paginaActualCards - 1) * paisesPorCards;
     const fin = inicio + paisesPorCards;
@@ -162,7 +160,6 @@ function agregarHijoCard(index, nombrePais) {
     cardBody.appendChild(hijoDiv);
 }
 
-// Inicialización
 document.addEventListener('DOMContentLoaded', () => {
     cargarPaises();
     
@@ -182,7 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Cards: Botones de flecha
     document.getElementById("btnAnteriorCards").addEventListener("click", () => {
         if (paginaActualCards > 1) {
             paginaActualCards--;
@@ -198,26 +194,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Buscador
-    document.getElementById("buscador").addEventListener("input", (e) => {
-        const query = e.target.value.toLowerCase();
-        const filtrados = paisesTodos.filter(p => 
-            p.name.toLowerCase().includes(query)
-        );
-        paginaActual = 1;
-        paginaActualCards = 1;
-        paisesTodos = filtrados;
-        paisesCards = [...filtrados];
-        llenarTablaPaginada();
-        llenarCards();
+    const inputBuscador = document.getElementById("buscador");
+    inputBuscador.addEventListener("input", (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        
+        if (!query) {
+
+            paisesTodos = [...paisesOriginales];
+            paisesCards = [...paisesOriginales];
+            paginaActual = 1;
+            paginaActualCards = 1;
+            llenarTablaPaginada();
+            llenarCards();
+        } else {
+            const filtradosTabla = paisesOriginales.filter(p => 
+                p.name.toLowerCase().includes(query)
+            );
+            const filtradosCards = [...filtradosTabla];
+            
+            paisesTodos = filtradosTabla;
+            paisesCards = filtradosCards;
+            paginaActual = 1;
+            paginaActualCards = 1;
+            llenarTablaPaginada();
+            llenarCards();
+        }
     });
     
-    // Botón general "Cambiar Nombre"
     document.getElementById("cambiaNombre").addEventListener("click", () => {
         document.getElementById("cambiaNombre").innerHTML = "¡Nombre cambiado!";
     });
     
-    // Botón "Agregar Hijo" (original)
     document.getElementById("agregaHijo").addEventListener("click", () => {
         const nuevoHijo = document.createElement("div");
         nuevoHijo.className = "p-2 bg-light rounded m-2";
@@ -225,21 +232,3 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById("agregaHijo").insertAdjacentElement("afterend", nuevoHijo);
     });
 });
-
-
-
-let nombreExamen = "PAISES";
-let oficial = "SUBTTE ART. CRUZ SAGASTUME";
-
-console.log("Examen: " + nombreExamen);
-console.log("Oficial a examinado: " + oficial);
-
-let suma = 20 + 80;
-console.log("La nota de Cruz Sagastume es de: " + suma);
-
-let cantidadPaises = null;
-console.log("Cantidad de países: " + cantidadPaises);
-
-let paisesDisponibles;
-console.log("Paises disponibles: " + paisesDisponibles);
-
