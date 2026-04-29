@@ -48,26 +48,30 @@
             </section>
             <section id="tabla-paises" class="my-5">
                 <h2 class="mb-4">Lista de Países</h2>
-                <div class="table-responsive">
-                    <input type="text" id="buscador" class="form-control mb-3" placeholder="Busca un país por nombre...">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Nombre del País</th>
-                                <th>Capital</th>
-                                <th>Región</th>
-                                <th>Población</th>
-                                <th>Idioma</th>
-                            </tr>
-                        </thead>
-                        <tbody id="cuerpoTabla">
-                           
-                        </tbody>
-                    </table>
-                </div>
+                 <div class="table-responsive">
+                     <input type="text" id="buscador" class="form-control mb-3" placeholder="Busca un país por nombre...">
+                     <table id="tablaPaises" class="table table-striped">
+                         <thead>
+                             <tr>
+                                 <th>Nombre del País</th>
+                                 <th>Capital</th>
+                                 <th>Región</th>
+                                 <th>Población</th>
+                                 <th>Idioma</th>
+                             </tr>
+                         </thead>
+                         <tbody id="cuerpoTabla">
+                            
+                         </tbody>
+                     </table>
+                 </div>
              
             </section>
+            <button id="cambiaNombre">Cambiar Nombre</button>
         </main>
+         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+         <script src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.0/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
