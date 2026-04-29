@@ -3,8 +3,7 @@
             height: 200px; 
             object-fit: cover; 
         }
-        
-        /* Separar el carrusel del nav */
+
         .separador-nav {
             height: 20px;
             background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
