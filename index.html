@@ -46,11 +46,11 @@
                 <h1 class="text-center mb-4">Bienvenido al Examen Final de API de Países</h1>
                 <p class="text-center">Explora información detallada sobre países de todo el mundo, incluyendo su población, nombre  y capital.</p>
             </section>
-            <section id="tabla-paises" class="my-5">
-                <h2 class="mb-4">Lista de Países</h2>
+             <section id="tabla-paises" class="my-5">
+                 <h2 class="mb-4">Lista de Países</h2>
                  <div class="table-responsive">
                      <input type="text" id="buscador" class="form-control mb-3" placeholder="Busca un país por nombre...">
-                     <table id="tablaPaises" class="table table-striped">
+                     <table class="table table-striped" id="tablaPaises">
                          <thead>
                              <tr>
                                  <th>Nombre del País</th>
@@ -65,9 +65,28 @@
                          </tbody>
                      </table>
                  </div>
+                 <div class="d-flex justify-content-center align-items-center mt-3">
+                     <button id="btnAnterior" class="btn btn-primary mx-2">
+                         <i class="fas fa-chevron-left"></i>
+                     </button>
+                     <span id="paginaInfo" class="mx-3">Página 1</span>
+                     <button id="btnSiguiente" class="btn btn-primary mx-2">
+                         <i class="fas fa-chevron-right"></i>
+                     </button>
+                 </div>
              
-            </section>
-            <button id="cambiaNombre">Cambiar Nombre</button>
+             </section>
+             
+    
+             <section id="cards-paises" class="my-5">
+                 <h2 class="mb-4">Países Destacados</h2>
+                 <div class="row" id="contenedorCards">
+                   
+                 </div>
+                 
+             </section>
+             
+           
         </main>
          <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
          <script src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
