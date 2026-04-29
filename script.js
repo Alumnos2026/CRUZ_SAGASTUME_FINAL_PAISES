@@ -232,3 +232,18 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById("agregaHijo").insertAdjacentElement("afterend", nuevoHijo);
     });
 });
+
+let nombreExamen = "PAISES";
+let oficial = "SUBTTE ART. CRUZ SAGASTUME";
+
+console.log("Examen: " + nombreExamen);
+console.log("Oficial a examinado: " + oficial);
+
+let suma = 20 + 80;
+console.log("La nota de Cruz Sagastume es de: " + suma);
+
+let cantidadPaises = null;
+console.log("Cantidad de países: " + cantidadPaises);
+
+let paisesDisponibles;
+console.log("Paises disponibles: " + paisesDisponibles);
